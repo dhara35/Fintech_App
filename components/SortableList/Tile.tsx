@@ -66,7 +66,7 @@ const Tile = ({ id }: TileProps) => {
               height: 60,
               width: 60,
               borderRadius: 30,
-              backgroundColor: Colors.primary,
+              backgroundColor: Colors.blue,
               alignItems: "center",
               justifyContent: "center",
             }}

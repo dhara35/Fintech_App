@@ -59,4 +59,10 @@ export const defaultStyles = StyleSheet.create({
     borderRadius: 16,
     gap: 20,
   },
+   titleHeader: {
+    fontSize: 25,
+    fontWeight: "600",
+    padding:10,
+    color: Colors.azure,
+  },
 });

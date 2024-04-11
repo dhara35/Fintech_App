@@ -1,6 +1,5 @@
 import Dropdown from "@/components/Dropdown";
 import RoundBtn from "@/components/RoundBtn";
-import WidgetList from "@/components/SortableList/WidgetList";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { useBalanceStore } from "@/store/balanceStore";
@@ -34,12 +33,13 @@ const Page = () => {
       style={{ backgroundColor: Colors.background }}
       contentContainerStyle={{
         paddingTop: headerHeight,
+        paddingBottom: 60,
       }}
     >
       <View style={styles.account}>
         <View style={styles.row}>
           <Text style={styles.balance}>{balance()}</Text>
-          <Text style={styles.currency}>€</Text>
+          <Text style={styles.currency}>₹</Text>
         </View>
         <TouchableOpacity
           style={[
@@ -50,7 +50,7 @@ const Page = () => {
           <Text
             style={[defaultStyles.buttonTextSmall, { color: Colors.primary2 }]}
           >
-            Accounts
+            Balance
           </Text>
         </TouchableOpacity>
       </View>
@@ -87,24 +87,30 @@ const Page = () => {
             </View>
 
             <View style={{ flex: 1 }}>
-              <Text style={{ fontWeight: "400" }}>{transaction.title}</Text>
+              <Text style={{ fontWeight: "400", color: Colors.azure }}>
+                {transaction.title}
+              </Text>
               <Text style={{ color: Colors.azure, fontSize: 12 }}>
                 {transaction.date.toLocaleString()}
               </Text>
             </View>
-            <Text>{transaction.amount}€</Text>
+            <Text style={{ color: Colors.azure }}>{transaction.amount}₹</Text>
           </View>
         ))}
       </View>
-      <Text style={defaultStyles.sectionHeader}>Widgets</Text>
-      <WidgetList />
     </ScrollView>
   );
 };
 const styles = StyleSheet.create({
   account: {
-    margin: 80,
+    width: 200,
+    height: 200,
+    margin: 20,
+    marginLeft: 80,
     alignItems: "center",
+    backgroundColor: Colors.primary2,
+    borderRadius: 100,
+    paddingTop: 40,
   },
   row: {
     flexDirection: "row",

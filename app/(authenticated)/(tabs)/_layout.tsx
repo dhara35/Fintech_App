@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { FontAwesome } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-
+import TitleHeader from "@/components/TitleHeader";
 import CustomHeader from "@/components/CustomHeader";
 import { View } from "react-native";
 
@@ -41,12 +41,14 @@ const Layout = () => {
         }}
       />
       <Tabs.Screen
-        name="invest"
+        name="cards"
         options={{
-          title: "Invest",
+          title: "Cards",
           tabBarIcon: ({ size, color }) => (
-            <FontAwesome name="line-chart" size={size} color={color} />
+            <FontAwesome name="credit-card" size={size} color={color} />
           ),
+          header: () => <TitleHeader />,
+          headerTransparent: true,
         }}
       />
       <Tabs.Screen

@@ -7,6 +7,7 @@ export default {
   lightGray: '#D8DCE2',
   azure: '#F0FFFF',
   Active: "#ffffff",
-  blue: "#a3cef1",
-  primary2: "#1c1c1c"
+  blue: "#00b899",
+  primary2: "#1c1c1c",
+  card:"#00b899",
 };

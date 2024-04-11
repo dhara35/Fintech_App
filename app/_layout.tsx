@@ -15,7 +15,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserInactivityProvider } from "@/context/UserInactivity";
 const queryClient = new QueryClient();
 
-// Cache the Clerk JWT
 const tokenCache = {
   async getToken(key: string) {
     try {

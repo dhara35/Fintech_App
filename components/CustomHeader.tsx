@@ -10,7 +10,7 @@ const CustomHeader = () => {
   const { top } = useSafeAreaInsets();
 
   return (
-    <View style={{ paddingTop: top }}>
+    <View style={{ paddingTop: top, backgroundColor: Colors.primary2 }}>
       <View
         style={[
           styles.container,
@@ -34,7 +34,7 @@ const CustomHeader = () => {
           }}
         >
           <Text style={{ color: "#fff", fontWeight: "500", fontSize: 16 }}>
-            SG
+            DV
           </Text>
         </TouchableOpacity>
         {/* </Link> */}
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.primary2,
+    backgroundColor: Colors.dark,
     borderRadius: 30,
   },
   searchIcon: {
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 0,
-    backgroundColor: Colors.primary2,
-    color: Colors.dark,
+    backgroundColor: Colors.dark,
+    color: Colors.azure,
     borderRadius: 30,
   },
   circle: {
