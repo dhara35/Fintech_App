@@ -9,7 +9,7 @@ const Layout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.primary,
+        tabBarActiveTintColor: Colors.Active,
         tabBarBackground: () => (
           <View
             style={{
@@ -19,7 +19,7 @@ const Layout = () => {
           />
         ),
         tabBarStyle: {
-          backgroundColor: "transparent",
+          backgroundColor: Colors.primary2,
           position: "absolute",
           bottom: 0,
           left: 0,
