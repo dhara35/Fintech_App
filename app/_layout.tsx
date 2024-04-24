@@ -7,14 +7,33 @@ import { Link, Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import { TouchableOpacity, Text, View, ActivityIndicator } from "react-native";
+import {
+  TouchableOpacity,
+  Pressable,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 import * as SecureStore from "expo-secure-store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserInactivityProvider } from "@/context/UserInactivity";
-const queryClient = new QueryClient();
 
+const queryClient = new QueryClient();
+const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+export const LogoutButton = () => {
+  const { signOut } = useAuth();
+
+  const doLogout = () => {
+    signOut();
+  };
+
+  return (
+    <Pressable onPress={doLogout} style={{ marginRight: 10 }}>
+      <Ionicons name="log-out-outline" size={24} color={"#fff"} />
+    </Pressable>
+  );
+};
 const tokenCache = {
   async getToken(key: string) {
     try {
@@ -84,17 +103,17 @@ const InitialLayout = () => {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
-        name="signup"
+        name="register"
         options={{
           title: "",
           headerBackTitle: "",
           headerShadowVisible: false,
-          headerStyle: { backgroundColor: Colors.background },
-          headerLeft: () => (
-            <TouchableOpacity onPress={router.back}>
-              <Ionicons name="arrow-back" size={34} color={Colors.dark} />
-            </TouchableOpacity>
-          ),
+          headerStyle: { backgroundColor: Colors.blue },
+          // headerLeft: () => (
+          //   <TouchableOpacity onPress={router.back}>
+          //     <Ionicons name="arrow-back" size={34} color={Colors.azure} />
+          //   </TouchableOpacity>
+          // ),
         }}
       />
 
@@ -104,10 +123,10 @@ const InitialLayout = () => {
           title: "",
           headerBackTitle: "",
           headerShadowVisible: false,
-          headerStyle: { backgroundColor: Colors.background },
+          headerStyle: { backgroundColor: Colors.blue },
           headerLeft: () => (
             <TouchableOpacity onPress={router.back}>
-              <Ionicons name="arrow-back" size={34} color={Colors.dark} />
+              <Ionicons name="arrow-back" size={34} color={Colors.azure} />
             </TouchableOpacity>
           ),
           headerRight: () => (
@@ -116,20 +135,38 @@ const InitialLayout = () => {
                 <Ionicons
                   name="help-circle-outline"
                   size={34}
-                  color={Colors.dark}
+                  color={Colors.azure}
                 />
               </TouchableOpacity>
             </Link>
           ),
         }}
       />
+      <Stack.Screen
+        name="reset"
+        options={{
+          title: "",
+          headerBackTitle: "",
+          headerShadowVisible: false,
+          headerStyle: { backgroundColor: Colors.blue },
+          // headerLeft: () => (
+          //   <TouchableOpacity onPress={router.back}>
+          //     <Ionicons name="arrow-back" size={34} color={Colors.azure} />
+          //   </TouchableOpacity>
+          // ),
+        }}
+      ></Stack.Screen>
 
       <Stack.Screen
         name="help"
-        options={{ title: "Help", presentation: "modal" }}
+        options={{
+          title: "Help",
+          presentation: "modal",
+          headerStyle: { backgroundColor: Colors.blue },
+        }}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="verify/[phone]"
         options={{
           title: "",
@@ -138,11 +175,11 @@ const InitialLayout = () => {
           headerStyle: { backgroundColor: Colors.background },
           headerLeft: () => (
             <TouchableOpacity onPress={router.back}>
-              <Ionicons name="arrow-back" size={34} color={Colors.dark} />
+              <Ionicons name="arrow-back" size={34} color={Colors.azure} />
             </TouchableOpacity>
           ),
         }}
-      />
+      /> */}
       <Stack.Screen
         name="(authenticated)/(tabs)"
         options={{ headerShown: false }}
@@ -178,8 +215,8 @@ const InitialLayout = () => {
         name="(authenticated)/(modals)/lock"
         options={{ headerShown: false, animation: "none" }}
       /> */}
-      {/* <Stack.Screen
-        name="(authenticated)/(modals)/account"
+      <Stack.Screen
+        name="(authenticated)/(modals)/profile"
         options={{
           presentation: "transparentModal",
           animation: "fade",
@@ -190,8 +227,10 @@ const InitialLayout = () => {
               <Ionicons name="close-outline" size={34} color={"#fff"} />
             </TouchableOpacity>
           ),
+          headerRight: () => <LogoutButton />,
         }}
-      /> */}
+        redirect={!isSignedIn}
+      />
     </Stack>
   );
 };

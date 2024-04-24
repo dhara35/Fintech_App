@@ -10,6 +10,7 @@ export const defaultStyles = StyleSheet.create({
   header: {
     fontSize: 40,
     fontWeight: '700',
+    color:Colors.azure,
   },
   pillButton: {
     padding: 10,
@@ -17,6 +18,7 @@ export const defaultStyles = StyleSheet.create({
     borderRadius: 40,
     justifyContent: 'center',
     alignItems: 'center',
+    color:Colors.blue,
   },
   textLink: {
     color: Colors.primary,
@@ -26,7 +28,7 @@ export const defaultStyles = StyleSheet.create({
   descriptionText: {
     fontSize: 18,
     marginTop: 20,
-    color: Colors.gray,
+    color: Colors.azure,
   },
   buttonText: {
     color: '#fff',

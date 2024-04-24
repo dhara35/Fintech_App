@@ -4,6 +4,7 @@ import { Tabs } from "expo-router";
 import TitleHeader from "@/components/TitleHeader";
 import CustomHeader from "@/components/CustomHeader";
 import { View } from "react-native";
+import ExploreHeader from "@/components/ExploreHeader";
 
 const Layout = () => {
   return (
@@ -54,10 +55,12 @@ const Layout = () => {
       <Tabs.Screen
         name="transfers"
         options={{
-          title: "Transfers",
+          title: "Explore Stock",
           tabBarIcon: ({ size, color }) => (
-            <FontAwesome name="exchange" size={size} color={color} />
+            <FontAwesome name="credit-card" size={size} color={color} />
           ),
+          header: () => <ExploreHeader />,
+          headerTransparent: true,
         }}
       />
       <Tabs.Screen
