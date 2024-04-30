@@ -40,7 +40,7 @@ const Register = () => {
       });
 
       // send the email.
-      await signUp.prepareEmailAddressVerification({ strat egy: "email_code" });
+      await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
 
       // change the UI to our pending section.
       setPendingVerification(true);
