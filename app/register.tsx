@@ -15,7 +15,8 @@ import { defaultStyles } from "@/constants/Styles";
 
 const Register = () => {
   const { isLoaded, signUp, setActive } = useSignUp();
-
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [pendingVerification, setPendingVerification] = useState(false);
@@ -31,21 +32,20 @@ const Register = () => {
     setLoading(true);
 
     try {
-      // Create the user on Clerk
       await signUp.create({
+        firstName,
+        lastName,
         emailAddress,
         password,
       });
 
-      // Send verification Email
-      await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
+      // send the email.
+      await signUp.prepareEmailAddressVerification({ strat egy: "email_code" });
 
-      // change the UI to verify the email address
+      // change the UI to our pending section.
       setPendingVerification(true);
     } catch (err: any) {
-      alert(err.errors[0].message);
-    } finally {
-      setLoading(false);
+      console.error(JSON.stringify(err, null, 2));
     }
   };
 
@@ -63,9 +63,7 @@ const Register = () => {
 
       await setActive({ session: completeSignUp.createdSessionId });
     } catch (err: any) {
-      alert(err.errors[0].message);
-    } finally {
-      setLoading(false);
+      console.error(JSON.stringify(err, null, 2));
     }
   };
 
@@ -86,6 +84,24 @@ const Register = () => {
 
           {!pendingVerification && (
             <>
+              <TextInput
+                style={styles.input}
+                autoCapitalize="none"
+                value={firstName}
+                placeholderTextColor={Colors.gray}
+                placeholder="First Name"
+                onChangeText={(firstName) => setFirstName(firstName)}
+              />
+
+              <TextInput
+                style={styles.input}
+                autoCapitalize="none"
+                value={lastName}
+                placeholderTextColor={Colors.gray}
+                placeholder="Last Name"
+                onChangeText={(lastName) => setLastName(lastName)}
+              />
+
               <TextInput
                 style={styles.input}
                 autoCapitalize="none"

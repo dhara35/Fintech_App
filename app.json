@@ -12,18 +12,27 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-      "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-  "permissions": ["android.permission.CAMERA","android.permission.INTERNET"],
-
-      "package": "com.dhara_12.fintech_app"
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.INTERNET",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.dhara_12.fintech_app",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "bundler": "metro",
@@ -31,7 +40,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-       [
+      [
         "expo-camera",
         {
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
@@ -47,12 +56,26 @@
       ],
       [
         "@config-plugins/react-native-dynamic-app-icon",
-        ["./path/to/image.png", "https://mywebsite.com/my-icon.png"]
+        [
+          "./path/to/image.png",
+          "https://mywebsite.com/my-icon.png"
+        ]
       ],
       "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": "https://galaxies.dev"
+      },
+      "eas": {
+        "projectId": "dc665894-eec5-47df-844d-3a9b69814a1a"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/dc665894-eec5-47df-844d-3a9b69814a1a"
     }
   }
 }

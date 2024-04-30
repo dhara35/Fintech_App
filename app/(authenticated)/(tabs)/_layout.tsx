@@ -74,7 +74,7 @@ const Layout = () => {
           headerTransparent: true,
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="lifestyle"
         options={{
           title: "Lifestyle",
@@ -82,7 +82,7 @@ const Layout = () => {
             <FontAwesome name="th" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
     </Tabs>
   );
 };

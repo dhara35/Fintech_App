@@ -49,14 +49,14 @@ const ShareDetails = ({ company }) => {
         currency: currency,
         key: razorpayKeyId,
         amount: totalAmount*100,
-        name: 'test order',
+        name: `Checkout for ${company.name}`,
         order_id: "", //Replace this with an order_id created using Orders API. Learn more at https://razorpay.com/docs/api/orders.
         prefill: {
           email: 'xyz@gmail.com',
           contact: '9999999999',
           name: 'User 1'
         },
-        theme: { color: '#F37254' }
+        theme: { color: '#00b899' }
       }
   
       RazorpayCheckout.open(options).then((data) => {
